@@ -15,6 +15,18 @@ function createGrid(dimension) {
     return;
 }
 
+function addHover(){
+    const cells = document.querySelectorAll('.cell');
 
 
+    cells.forEach((div) => {
+        div.addEventListener('mouseover', () => {
+            div.style.backgroundColor = "black";
+        });
+    });
+    return;
+}
+    
 createGrid(gridDim);
+addHover();
+console.log("hello!");

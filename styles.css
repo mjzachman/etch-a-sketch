@@ -34,10 +34,12 @@ header{
 
 ul{
     list-style-type: none;
+    
 }
 
 li{
     padding: 10px 0px;
+
 }
 .content{
     display: flex;
