@@ -1,6 +1,6 @@
 const container = document.querySelector('#grid');
 
-let gridDim = 16;
+let gridDim = 64;
 
 function createGrid(dimension) {
 
@@ -17,8 +17,6 @@ function createGrid(dimension) {
 
 function addHover(){
     const cells = document.querySelectorAll('.cell');
-
-
     cells.forEach((div) => {
         div.addEventListener('mouseover', () => {
             div.style.backgroundColor = "black";
@@ -29,4 +27,3 @@ function addHover(){
     
 createGrid(gridDim);
 addHover();
-console.log("hello!");
