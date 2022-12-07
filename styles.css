@@ -11,7 +11,8 @@ header{
     display:flex;
     justify-content: center;
     align-items: center;
-    background-color: lightcoral;
+    background-color: navy;
+    color: white;
     height: 50px;
 }
 
@@ -31,19 +32,41 @@ header{
     
 }
 
+ul{
+    list-style-type: none;
+}
+
+li{
+    padding: 10px 0px;
+}
 .content{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: darkorchid;
+    background-color: lightblue;
     flex-grow: 1;
 }
 
+#grid{
+    height:500px;
+    width: 500px;
+    background-color: yellow;
+    border: solid black 5px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cell{
+    background-color: white;
+    outline: 1px solid black;
+    margin: 0;
+    padding: 0;
+}
 footer{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: black;
+    background-color: navy;
     color: white;
     height: 50px;
 }
