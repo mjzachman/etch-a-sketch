@@ -1,9 +1,8 @@
-const container = document.querySelector('#grid');
+const grid = document.querySelector('#grid');
 
 let gridDim = 16;
 
 function createGrid(dimension) {
-
     let cellDim = (100/dimension).toString();
     
     for(let i = 0; i < (dimension ** 2); i++){
@@ -15,7 +14,14 @@ function createGrid(dimension) {
     return;
 }
 
-function addCellEvents(){
+function eraseGrid(){
+    while (grid.hasChildNodes()) {
+        grid.removeChild(grid.firstChild);
+    }
+    return;
+}
+
+function addHover(){
     const cells = document.querySelectorAll('.cell');
     cells.forEach((div) => {
         div.addEventListener('mouseover', () => {
@@ -25,16 +31,23 @@ function addCellEvents(){
     return;
 }
 
+function changeGridDim(){
+    gridDim = prompt("What grid dimension would you like?", "enter a number");
+    if (gridDim > 100 || gridDim <= 0 || gridDim % 1 != 0){ changeGridDim();}
+    eraseGrid();
+    createGrid(gridDim);
+    addHover();
+    return;
+}
+
 function addButtonEvents(){
     const buttons = document.querySelector('#grid-size');
     buttons.addEventListener('click', () => {
-       gridDim = prompt("What grim dimension would you like?", "enter a number");
-       deleteGrid();
-       createGrid(gridDim);
+       changeGridDim();
      })
     return;
 }
     
 createGrid(gridDim);
-addCellEvents();
+addHover();
 addButtonEvents();
