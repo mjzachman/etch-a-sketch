@@ -53,7 +53,7 @@ function refreshGrid() {
 
 function changeGridDim() {
   gridDim = prompt('What grid dimension would you like?', 'enter a number');
-  if (gridDim > 100 || gridDim <= 0 || gridDim % 1 != 0) { changeGridDim(); }
+  if (gridDim > 100 || gridDim <= 0 || gridDim % 1 !== 0) { changeGridDim(); }
   refreshGrid();
   addHover(mouseColor);
 }
