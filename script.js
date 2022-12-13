@@ -4,24 +4,12 @@ let gridDim = 16;
 const mouseColor = 'black';
 let penStatus = 'black';
 
-function createGrid(dimension) {
-  const cellDim = (100 / dimension).toString();
-
-  for (let i = 0; i < (dimension ** 2); i++) {
-    const cell = document.createElement('div');
-    cell.setAttribute('class', 'cell');
-    cell.setAttribute('style', `flex-basis: ${cellDim}%`);
-    grid.appendChild(cell);
-  }
-
-  if (penStatus === 'rainbow') { addRainbow(); } else { addHover(mouseColor); }
-}
-
-function refreshGrid() {
-  while (grid.hasChildNodes()) {
-    grid.removeChild(grid.firstChild);
-  }
-  createGrid(gridDim);
+function getRandomRgb() {
+  const num = Math.round(0xffffff * Math.random());
+  const r = num >> 16;
+  const g = num >> 8 & 255;
+  const b = num & 255;
+  return `rgb(${r}, ${g}, ${b})`;
 }
 
 function addHover(color) {
@@ -41,6 +29,26 @@ function addRainbow() {
     });
   });
   penStatus = 'rainbow';
+}
+
+function createGrid(dimension) {
+  const cellDim = (100 / dimension).toString();
+
+  for (let i = 0; i < (dimension ** 2); i += 1) {
+    const cell = document.createElement('div');
+    cell.setAttribute('class', 'cell');
+    cell.setAttribute('style', `flex-basis: ${cellDim}%`);
+    grid.appendChild(cell);
+  }
+
+  if (penStatus === 'rainbow') { addRainbow(); } else { addHover(mouseColor); }
+}
+
+function refreshGrid() {
+  while (grid.hasChildNodes()) {
+    grid.removeChild(grid.firstChild);
+  }
+  createGrid(gridDim);
 }
 
 function changeGridDim() {
@@ -73,14 +81,6 @@ function addButtonEvents() {
     refreshGrid();
     addRainbow();
   });
-}
-
-function getRandomRgb() {
-  const num = Math.round(0xffffff * Math.random());
-  const r = num >> 16;
-  const g = num >> 8 & 255;
-  const b = num & 255;
-  return `rgb(${r}, ${g}, ${b})`;
 }
 
 function main() {
